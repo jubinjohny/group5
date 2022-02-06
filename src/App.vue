@@ -1,20 +1,18 @@
-
 <template>
-  <div class="home">
-    <ProductPage />
+  <div id="app">
+    <Home />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import ProductPage from "@/components/ProductPage.vue";
+import Home from './views/Home.vue'
 
 export default {
-  name: "Home",
+  name: 'App',
   components: {
-    ProductPage,
-  },
-};
+    Home
+  }
+}
 </script>
 <style>
 #app {
