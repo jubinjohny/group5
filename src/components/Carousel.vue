@@ -1,18 +1,18 @@
 <template>
   <section class="carousel">
-    <div id="webshop-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- <div id="webshop-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
       <li data-bs-target="#webshop-hero-carousel" class="active" data-bs-slide-to="0"></li>
       <li data-bs-target="#webshop-hero-carousel" data-bs-slide-to="1"></li>
       <li data-bs-target="#webshop-hero-carousel" data-bs-slide-to="2"></li>
-    </ol>
+    </ol> -->
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="img-fluid" src="@/assets/iphone13.gif"  width="100%" alt="First slide">
         </div>
 
       </div>
-    </div>
+    <!-- </div> -->
   </section>
 </template>
 
