@@ -1,202 +1,309 @@
 <template>
-     <div id="app">
+  <div id="app">
     <div id="nav">
       <div class="">
-      <div class="appbar-desktop d-none d-lg-block border-bottom">
-        <b-navbar variant="faded" type="light" toggleable="lg" class="py-0">
+        <div class="appbar-desktop d-none d-lg-block border-bottom">
+          <b-navbar variant="faded" type="light" toggleable="lg" class="py-0">
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          
-          <b-navbar-brand class="mb-0">
-              <span style="font-size: 28px; font-weight: 700; font-family: Amaranth">
-                  G5Shopping
+            <b-navbar-brand class="mb-0">
+              <span
+                style="font-size: 28px; font-weight: 700; font-family: Amaranth"
+              >
+                G5Shopping
               </span>
-          </b-navbar-brand>
+            </b-navbar-brand>
 
-          <b-collapse id="nav-collapse" is-nav class="">
-            <b-navbar-nav>
-              <b-nav-item class="py-4 category" tag="router-link" v-for="route in routes" :key="route.path" :to="route.path">
-                {{route.name}}
-              </b-nav-item>
-            </b-navbar-nav>
-          </b-collapse>
+            <b-collapse id="nav-collapse" is-nav class="">
+              <b-navbar-nav>
+                <b-nav-item
+                  class="py-4 category"
+                  tag="router-link"
+                  v-for="route in routes"
+                  :key="route.path"
+                  :to="route.path"
+                >
+                  {{ route.name }}
+                </b-nav-item>
+              </b-navbar-nav>
+            </b-collapse>
 
-          <b-navbar-nav class="ml-auto d-flex flex-row align-items-center">
+            <b-navbar-nav class="ml-auto d-flex flex-row align-items-center">
               <b-nav-item class="col-6">
-                  <b-dropdown size="xl"  variant="link" toggle-class="text-decoration-none" no-caret right>
-                      <template #button-content>
-                          <b-img src="/assets/icon-cart.svg" alt=""></b-img>
-                          <span class="cart-count">
-                            {{ cartItemsCount }}
-                          </span>
-                      </template>
-
-                      <!-- <b-dropdown-item href="#"> -->
-                      <div style="min-width: 350px; box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.1); border-radius: 15px !important;">
-                          <div class="d-flex flex-column">
-                              <div class="col-12 p-3 border-bottom">
-                                  <span style="font-weight: 700">
-                                      Cart
-                                  </span>
-                              </div>
-                              <div class="col-11 px-1 mt-3" style="max-height: 200px; overflow: auto;">
-                                <div v-if="cartItems && cartItems.length > 0">
-                                    <div v-for="(item, index) in cartItems" :key="index" class="d-flex flex-row justify-content-between my-3">
-                                      <div class="col-3 px-0 text-center">
-                                        <img :src="item.image" alt="product Image" width="70%" height="50px" style="object-fit: cover; border-radius: 10px">
-                                      </div>
-                                      <div class="col-8 px-1 d-flex flex-column">
-                                        <div>
-                                            <span style="font-size: 14px" class="text-muted">
-                                                {{ item.title }}
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: 15px" class="text-muted">
-                                              ${{ parseFloat(item.price).toFixed(2) }} X {{ item.quantity }}
-                                            </span>
-                                            <span class="" style="font-weight: 700">
-                                              ${{ calcPrice(item) }}
-                                            </span>
-                                        </div>
-                                      </div>
-                                      <div class="col-1 px-1">
-                                        <span @click="deleteItem(item, index)">
-                                          <img src="/assets/icon-delete.svg" alt="">
-                                        </span>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div v-else>
-                                    <div class="row justify-content-center align-items-center" style="min-height: 200px">
-                                        <div class="col-12 text-center">
-                                            <span class="text-muted" style="font-weight: 700">
-                                                Your cart is empty.
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="col-12 my-3">
-                                <button class="p-3 text-white border-0 w-100 checkout-btn" style="background-color: hsl(229, 100%, 55%); font-weight: 700; font-size: 14px; border-radius: 10px">
-                                  Checkout
-                                </button>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- </b-dropdown-item> -->
-                  </b-dropdown>
-              </b-nav-item>
-              <b-nav-item class="col-6">
-                  <span>
-                    <router-link to="/login">
-                  <b-img v-bind:src="imageLogin" class="avatar" rounded="circle" alt="Circle image" height="40px"></b-img>
-                    </router-link>
+                <b-dropdown
+                  size="xl"
+                  variant="link"
+                  toggle-class="text-decoration-none"
+                  no-caret
+                  right
+                >
+                  <template #button-content>
+                    <b-img src="/assets/icon-cart.svg" alt=""></b-img>
+                    <span class="cart-count">
+                      {{ cartItemsCount }}
                     </span>
-            </b-nav-item>
-          </b-navbar-nav>
+                  </template>
 
-        </b-navbar>
-      </div>
-
-      <div class="appbar-mobile d-lg-none d-md-block">
-        <b-navbar variant="faded" type="light" toggleable="lg">
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          <b-navbar-brand tag="h1" class="mb-0 mx-3">
-              <span style="font-size: 24px; font-weight: 700; font-family: Amaranth">
-                  G5Shopping
-              </span>
-          </b-navbar-brand>
-          
-          <b-navbar-nav class="ml-auto d-flex flex-row justify-content-between align-items-center">
-              <b-nav-item class="col-6">
-                  <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
-                      <template #button-content>
-                          <b-img src="/assets/icon-cart.svg" alt=""></b-img>
-                          <span class="cart-count">
-                            {{ cartItemsCount }}
-                          </span>
-                      </template>
-
-                      <div style="min-width: 350px; box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.1); border-radius: 15px !important;">
-                        <div class="d-flex flex-column">
-                          <div class="col-12 p-3 border-bottom">
-                              <span style="font-weight: 700">
-                                  Cart
+                  <!-- <b-dropdown-item href="#"> -->
+                  <div
+                    style="
+                      min-width: 350px;
+                      box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+                      border-radius: 15px !important;
+                    "
+                  >
+                    <div class="d-flex flex-column">
+                      <div class="col-12 p-3 border-bottom">
+                        <span style="font-weight: 700"> Cart </span>
+                      </div>
+                      <div
+                        class="col-11 px-1 mt-3"
+                        style="max-height: 200px; overflow: auto"
+                      >
+                        <div v-if="cartItems && cartItems.length > 0">
+                          <div
+                            v-for="(item, index) in cartItems"
+                            :key="index"
+                            class="d-flex flex-row justify-content-between my-3"
+                          >
+                            <div class="col-3 px-0 text-center">
+                              <img
+                                :src="item.image"
+                                alt="product Image"
+                                width="70%"
+                                height="50px"
+                                style="object-fit: cover; border-radius: 10px"
+                              />
+                            </div>
+                            <div class="col-8 px-1 d-flex flex-column">
+                              <div>
+                                <span
+                                  style="font-size: 14px"
+                                  class="text-muted"
+                                >
+                                  {{ item.title }}
+                                </span>
+                              </div>
+                              <div>
+                                <span
+                                  style="font-size: 15px"
+                                  class="text-muted"
+                                >
+                                  ${{ parseFloat(item.price).toFixed(2) }} X
+                                  {{ item.quantity }}
+                                </span>
+                                <span class="" style="font-weight: 700">
+                                  ${{ calcPrice(item) }}
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-1 px-1">
+                              <span @click="deleteItem(item, index)">
+                                <img src="/assets/icon-delete.svg" alt="" />
                               </span>
-                          </div>
-                          <div class="col-12 px-1 mt-3" style="max-height: 200px; overflow: auto">
-                            <div v-if="cartItems && cartItems.length > 0">
-                                <div v-for="(item, index) in cartItems" :key="index" class="d-flex flex-row justify-content-between my-3">
-                                  <div class="col-3 px-0 text-center">
-                                    <img :src="item.image" alt="product Image" width="70%" height="50px" style="object-fit: cover; border-radius: 10px">
-                                  </div>
-                                  <div class="col-8 px-1 d-flex flex-column">
-                                    <div>
-                                        <span style="font-size: 14px" class="text-muted">
-                                            {{ item.title }}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span style="font-size: 15px" class="text-muted">
-                                          ${{ parseFloat(item.price).toFixed(2) }} X {{ item.quantity }}
-                                        </span>
-                                        <span class="" style="font-weight: 700">
-                                          ${{ calcPrice(item) }}
-                                        </span>
-                                    </div>
-                                  </div>
-                                  <div class="col-1 px-1">
-                                    <span @click="deleteItem(item, index)">
-                                      <img src="/assets/icon-delete.svg" alt="">
-                                    </span>
-                                  </div>
-                                </div>
-                            </div>
-                            <div v-else>
-                                <div class="row justify-content-center align-items-center" style="min-height: 200px">
-                                    <div class="col-12 text-center">
-                                        <span class="text-muted" style="font-weight: 700">
-                                            Your cart is empty.
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                           </div>
-                          <div class="col-12 my-3">
-                            <button class="p-3 text-white border-0 w-100 checkout-btn" style="background-color: hsl(26, 100%, 55%); font-weight: 700; font-size: 14px; border-radius: 10px">
-                              Checkout
-                            </button>
+                        </div>
+                        <div v-else>
+                          <div
+                            class="row justify-content-center align-items-center"
+                            style="min-height: 200px"
+                          >
+                            <div class="col-12 text-center">
+                              <span class="text-muted" style="font-weight: 700">
+                                Your cart is empty.
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                  </b-dropdown>
+                      <div class="col-12 my-3">
+                        <button
+                          class="p-3 text-white border-0 w-100 checkout-btn"
+                          style="
+                            background-color: hsl(229, 100%, 55%);
+                            font-weight: 700;
+                            font-size: 14px;
+                            border-radius: 10px;
+                          "
+                        >
+                          Checkout
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- </b-dropdown-item> -->
+                </b-dropdown>
               </b-nav-item>
               <b-nav-item class="col-6">
-                  <span>
-                    <router-link to="/login">
-                  <b-img v-bind:src="imageLogin" class="avatar" rounded="circle" alt="Circle image" height="35px"></b-img>
-                    </router-link>
-                  </span>
-              </b-nav-item>
-          </b-navbar-nav>
-          
-          <b-collapse id="nav-collapse" is-nav class="">
-            <b-navbar-nav>
-              <b-nav-item class="py-4 category" tag="router-link" v-for="route in routes" :key="route.path" :to="route.path">
-                {{route.name}}
+                <span>
+                  <router-link to="/login">
+                    <b-img
+                      v-bind:src="imageLogin"
+                      class="avatar"
+                      rounded="circle"
+                      alt="Circle image"
+                      height="40px"
+                    ></b-img>
+                  </router-link>
+                </span>
               </b-nav-item>
             </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
+          </b-navbar>
+        </div>
+
+        <div class="appbar-mobile d-lg-none d-md-block">
+          <b-navbar variant="faded" type="light" toggleable="lg">
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+            <b-navbar-brand tag="h1" class="mb-0 mx-3">
+              <span
+                style="font-size: 24px; font-weight: 700; font-family: Amaranth"
+              >
+                G5Shopping
+              </span>
+            </b-navbar-brand>
+
+            <b-navbar-nav
+              class="ml-auto d-flex flex-row justify-content-between align-items-center"
+            >
+              <b-nav-item class="col-6">
+                <b-dropdown
+                  size="lg"
+                  variant="link"
+                  toggle-class="text-decoration-none"
+                  no-caret
+                >
+                  <template #button-content>
+                    <b-img src="/assets/icon-cart.svg" alt=""></b-img>
+                    <span class="cart-count">
+                      {{ cartItemsCount }}
+                    </span>
+                  </template>
+
+                  <div
+                    style="
+                      min-width: 350px;
+                      box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+                      border-radius: 15px !important;
+                    "
+                  >
+                    <div class="d-flex flex-column">
+                      <div class="col-12 p-3 border-bottom">
+                        <span style="font-weight: 700"> Cart </span>
+                      </div>
+                      <div
+                        class="col-12 px-1 mt-3"
+                        style="max-height: 200px; overflow: auto"
+                      >
+                        <div v-if="cartItems && cartItems.length > 0">
+                          <div
+                            v-for="(item, index) in cartItems"
+                            :key="index"
+                            class="d-flex flex-row justify-content-between my-3"
+                          >
+                            <div class="col-3 px-0 text-center">
+                              <img
+                                :src="item.image"
+                                alt="product Image"
+                                width="70%"
+                                height="50px"
+                                style="object-fit: cover; border-radius: 10px"
+                              />
+                            </div>
+                            <div class="col-8 px-1 d-flex flex-column">
+                              <div>
+                                <span
+                                  style="font-size: 14px"
+                                  class="text-muted"
+                                >
+                                  {{ item.title }}
+                                </span>
+                              </div>
+                              <div>
+                                <span
+                                  style="font-size: 15px"
+                                  class="text-muted"
+                                >
+                                  ${{ parseFloat(item.price).toFixed(2) }} X
+                                  {{ item.quantity }}
+                                </span>
+                                <span class="" style="font-weight: 700">
+                                  ${{ calcPrice(item) }}
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-1 px-1">
+                              <span @click="deleteItem(item, index)">
+                                <img src="/assets/icon-delete.svg" alt="" />
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div v-else>
+                          <div
+                            class="row justify-content-center align-items-center"
+                            style="min-height: 200px"
+                          >
+                            <div class="col-12 text-center">
+                              <span class="text-muted" style="font-weight: 700">
+                                Your cart is empty.
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 my-3">
+                        <button
+                          class="p-3 text-white border-0 w-100 checkout-btn"
+                          style="
+                            background-color: hsl(26, 100%, 55%);
+                            font-weight: 700;
+                            font-size: 14px;
+                            border-radius: 10px;
+                          "
+                        >
+                          Checkout
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </b-dropdown>
+              </b-nav-item>
+              <b-nav-item class="col-6">
+                <span>
+                  <router-link to="/login">
+                    <b-img
+                      v-bind:src="imageLogin"
+                      class="avatar"
+                      rounded="circle"
+                      alt="Circle image"
+                      height="35px"
+                    ></b-img>
+                  </router-link>
+                </span>
+              </b-nav-item>
+            </b-navbar-nav>
+
+            <b-collapse id="nav-collapse" is-nav class="">
+              <b-navbar-nav>
+                <b-nav-item
+                  class="py-4 category"
+                  tag="router-link"
+                  v-for="route in routes"
+                  :key="route.path"
+                  :to="route.path"
+                >
+                  {{ route.name }}
+                </b-nav-item>
+              </b-navbar-nav>
+            </b-collapse>
+          </b-navbar>
+        </div>
       </div>
     </div>
-      
-    </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
-
 
 <script>
 // @ is an alias to /src
@@ -205,101 +312,97 @@ import MainPage from "@/components/MainPage.vue";
 import About from "@/views/About.vue";
 // import Carousel from '@/components/Carousel.vue';
 // import AboutUs from '@/components/AboutUs.vue';
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   name: "Home",
-  props: {
-
-  },
-  components: {
-  },
+  props: {},
+  components: {},
   data() {
     return {
-      title: 'Fall Limited Edition G5Shopping',
+      title: "Fall Limited Edition G5Shopping",
       price: "125.000",
       count: 1,
-      mainImage: '/assets/image-product-1.jpg',
+      mainImage: "/assets/image-product-1.jpg",
       images: [
-        '/assets/image-product-1.jpg',
-        '/assets/image-product-2.jpg',
-        '/assets/image-product-3.jpg',
-        '/assets/image-product-4.jpg'
+        "/assets/image-product-1.jpg",
+        "/assets/image-product-2.jpg",
+        "/assets/image-product-3.jpg",
+        "/assets/image-product-4.jpg",
       ],
 
-      mainCategory: 'Collections',
-      categories: [
-          'Collections',
-          'Men',
-          'Women',
-          'About',
-          'Contact',
-      ],
+      mainCategory: "Collections",
+      categories: ["Collections", "Men", "Women", "About", "Contact"],
       cartItems: [],
       showImageModal: false,
       slide: 0,
-      loginImage: './assets/image-avatar-pre-login.svg',
+      loginImage: "./assets/image-avatar-pre-login.svg",
       routes: [
-  {
-    path: '/',
-    component: MainPage,
-    name: 'Home',
-  },
-  {
-    path: '/product',
-    component: ProductPage,
-    name: 'Product'
-  },
-  {
-    path: '/about',
-    component: About,
-    name: 'About'
-  },
-],
-    }
+        {
+          path: "/",
+          component: MainPage,
+          name: "Home",
+        },
+        {
+          path: "/product",
+          component: ProductPage,
+          name: "Product",
+        },
+        {
+          path: "/about",
+          component: About,
+          name: "About",
+        },
+      ],
+    };
   },
   mounted() {
-    const items = JSON.parse(localStorage.getItem('myCart'));
-    console.log('items', items);
+    const items = JSON.parse(localStorage.getItem("myCart"));
+    console.log("items", items);
     this.cartItems = items;
-    
-  window.addEventListener('localstorage-changed', () => {
-    this.cartItems = JSON.parse(localStorage.getItem('myCart'));
-    this.cartItemsCount;
-  });
 
-      const profileImage = localStorage.getItem("loginImage");
-      this.loginImage=profileImage;
-      
-  window.addEventListener('login-image', () => {
+    window.addEventListener("localstorage-changed", () => {
+      this.cartItems = JSON.parse(localStorage.getItem("myCart"));
+      this.cartItemsCount;
+    });
+
+    const profileImage = localStorage.getItem("loginImage");
+    this.loginImage = profileImage;
+
+    window.addEventListener("login-image", () => {
       console.log(localStorage.getItem("loginImage"));
-    this.loginImage = localStorage.getItem('loginImage');
-    console.log(this.loginImage);
-    this.imageLogin;
-  });
+      this.loginImage = localStorage.getItem("loginImage");
+      console.log(this.loginImage);
+      this.imageLogin;
+    });
   },
   computed: {
     cartItemsCount() {
       return this.cartItems.length;
     },
-    imageLogin () {
-      console.log(this.loginImage)
-      if(this.loginImage==null){
-        localStorage.setItem("loginImage",'./assets/image-avatar-pre-login.svg');
-        return './assets/image-avatar-pre-login.svg';
+    imageLogin() {
+      console.log(this.loginImage);
+      if (this.loginImage == null) {
+        localStorage.setItem(
+          "loginImage",
+          "./assets/image-avatar-pre-login.svg"
+        );
+        return "./assets/image-avatar-pre-login.svg";
       }
       return this.loginImage;
-    }
+    },
   },
   methods: {
     calcPrice(item) {
-      return parseFloat(parseFloat(item.price).toFixed(2) * item.quantity).toFixed(2);
+      return parseFloat(
+        parseFloat(item.price).toFixed(2) * item.quantity
+      ).toFixed(2);
     },
     deleteItem(item, index) {
       this.cartItems.splice(index, 1);
-      localStorage.setItem('myCart', JSON.stringify(this.cartItems));
+      localStorage.setItem("myCart", JSON.stringify(this.cartItems));
     },
-  }
-}
+  },
+};
 </script>
 <style scoped>
 .image {
@@ -344,13 +447,13 @@ export default {
   cursor: pointer;
 }
 
-.thumbnail img{
+.thumbnail img {
   cursor: pointer;
   opacity: 1;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.thumbnail:hover img{
+.thumbnail:hover img {
   /* background-color: #d2d2d2 !important;  */
   opacity: 0.3 !important;
 }
@@ -370,15 +473,15 @@ i:hover {
 
 /* navbar */
 .avatar:hover {
-    border: 2px solid hsl(229, 100%, 55%) !important;
+  border: 2px solid hsl(229, 100%, 55%) !important;
 }
 
 .category {
-    transition: 0.1s;
+  transition: 0.1s;
 }
 
 .category:hover {
-    border-bottom: 3px solid hsl(229, 100%, 55%);
+  border-bottom: 3px solid hsl(229, 100%, 55%);
 }
 
 .category:hover .text {
@@ -405,69 +508,69 @@ i:hover {
 }
 </style>
 <style>
-  .dropdown-menu.dropdown-menu-right.show {
-    padding: 0px !important;
-    border: 0px !important;
-  }
+.dropdown-menu.dropdown-menu-right.show {
+  padding: 0px !important;
+  border: 0px !important;
+}
 
-  .appbar-mobile .dropdown-menu.show {
-    position: absolute;
-    left: -220px;
-    border: none;
-    padding: 0px;
-    border-radius: 15px;
-  }
+.appbar-mobile .dropdown-menu.show {
+  position: absolute;
+  left: -220px;
+  border: none;
+  padding: 0px;
+  border-radius: 15px;
+}
 
-  .modal-content {
-    background-color: transparent !important;
-    border: none !important; 
-  }
+.modal-content {
+  background-color: transparent !important;
+  border: none !important;
+}
 
-  .modal-header {
-    border: none !important;
-  }
+.modal-header {
+  border: none !important;
+}
 
-  .modal-header .close {
-    opacity: 1 !important;
-  }
+.modal-header .close {
+  opacity: 1 !important;
+}
 
-  .carousel-control-prev {
-    opacity: 1 !important;
-    align-items: center !important;
-    position: absolute;
-    left: 0px !important;
-  }
+.carousel-control-prev {
+  opacity: 1 !important;
+  align-items: center !important;
+  position: absolute;
+  left: 0px !important;
+}
 
-  .carousel-control-next {
-    opacity: 1 !important;
-    align-items: center !important;
-    position: absolute;
-    right: 0px !important;
-  }
+.carousel-control-next {
+  opacity: 1 !important;
+  align-items: center !important;
+  position: absolute;
+  right: 0px !important;
+}
 
-  .carousel-control-prev-icon {
-    width: 30px !important;
-    height: 30px !important;
-  }
+.carousel-control-prev-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
 
-  .carousel-control-next-icon {
-    width: 30px !important;
-    height: 30px !important;
-  }
+.carousel-control-next-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
 
-  .navbar-toggler.collapsed {
-    border: none;
-    padding: 0px;
-  }
+.navbar-toggler.collapsed {
+  border: none;
+  padding: 0px;
+}
 
-  @media (max-width: 768px) {
-    .carousel-item .img-fluid {
-      border-radius: 0px !important;
-    }  
-  }
+@media (max-width: 768px) {
   .carousel-item .img-fluid {
-    border-radius: 30px;
+    border-radius: 0px !important;
   }
+}
+.carousel-item .img-fluid {
+  border-radius: 30px;
+}
 #app {
   font-family: Kumbh Sans, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
