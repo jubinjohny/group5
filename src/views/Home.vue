@@ -256,7 +256,7 @@
                         <button
                           class="p-3 text-white border-0 w-100 checkout-btn"
                           style="
-                            background-color: hsl(26, 100%, 55%);
+                            background-color: hsl(229, 100%, 55%);
                             font-weight: 700;
                             font-size: 14px;
                             border-radius: 10px;
