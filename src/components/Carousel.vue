@@ -6,20 +6,24 @@
       <li data-bs-target="#webshop-hero-carousel" data-bs-slide-to="1"></li>
       <li data-bs-target="#webshop-hero-carousel" data-bs-slide-to="2"></li>
     </ol> -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="img-fluid" src="@/assets/iphone13.gif"  width="100%" alt="First slide">
-        </div>
-
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          class="img-fluid"
+          src="@/assets/iphone13.gif"
+          width="100%"
+          alt="First slide"
+        />
       </div>
+    </div>
     <!-- </div> -->
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Carousel'
-}
+  name: "Carousel",
+};
 </script>
 
 <style scoped>

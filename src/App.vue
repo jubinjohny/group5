@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import Home from './views/Home.vue'
+import Home from "./views/Home.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Home
-  }
-}
+    Home,
+  },
+};
 </script>
 <style>
 #app {
