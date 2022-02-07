@@ -16,7 +16,7 @@
               <br />
             </div>
             <p class="section-container-spacer">
-              G5 shopping is a product distributor company of Apple products located in suthern Ontario aims to provide various Apple products to the end users in a cheaper price. We have direct collaboration with Apple Inc, which makes us to sell Apple products to the end users in a cheaper price compared to other retailers.
+              G5 shopping is a product distributor company of Apple products located in southern Ontario aims to provide various Apple products to the end users for a cheaper price. We have direct collaboration with Apple Inc, which enables us to sell Apple products to the end users for a cheaper price compared to other retailers.
             </p>
             <!-- will be reading from index.js -->
 
