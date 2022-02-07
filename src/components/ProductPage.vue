@@ -32,7 +32,7 @@
           <div class="container">
             <div>  
               <span style="font-size: 13px; letter-spacing: 1px; color: hsl(229, 100%, 55%); font-weight: 700">
-                SNEAKER COMPANY 
+                Apple 
               </span>  
             </div>
 
@@ -44,8 +44,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                These low-profile sneakers are your perfect casual wear companion.
-                Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.
+                Apple's iPhone 13 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
               </span>
             </div>
 
@@ -58,14 +57,14 @@
                 </div>
                 <div class="">
                   <span class="mx-3 discount px-2 py-1 rounded" style="font-weight: 900; font-size: 14px; color: hsl(229, 100%, 55%)">
-                    50%
+                    5%
                   </span>
                 </div>
               </div>
 
               <div class="col-4 col-md-12 my-1">
                 <span class="" style="font-weight: 700; color: rgb(183, 183, 183); text-decoration: line-through;">
-                  $250.00
+                  $1153.95
                 </span>
               </div>
             </div>
@@ -154,8 +153,8 @@ export default {
   },
   data() {
     return {
-      title: 'Fall Limited Edition Sneakers',
-      price: "125.000",
+      title: 'iPhone 13 (Blue, 128 GB)',
+      price: "1099",
       count: 1,
       mainImage: '/assets/image-product-1.jpg',
       images: [
