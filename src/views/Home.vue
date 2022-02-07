@@ -9,7 +9,7 @@
           
           <b-navbar-brand class="mb-0">
               <span style="font-size: 28px; font-weight: 700; font-family: Amaranth">
-                  Sneakers
+                  G5Shopping
               </span>
           </b-navbar-brand>
 
@@ -90,7 +90,7 @@
               <b-nav-item class="col-6">
                   <span>
                     <router-link to="/login">
-                  <b-img src="./assets/image-avatar.png" class="avatar" rounded="circle" alt="Circle image" height="40px"></b-img>
+                  <b-img v-bind:src="imageLogin" class="avatar" rounded="circle" alt="Circle image" height="40px"></b-img>
                     </router-link>
                     </span>
             </b-nav-item>
@@ -104,7 +104,7 @@
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           <b-navbar-brand tag="h1" class="mb-0 mx-3">
               <span style="font-size: 24px; font-weight: 700; font-family: Amaranth">
-                  Sneakers
+                  G5Shopping
               </span>
           </b-navbar-brand>
           
@@ -174,7 +174,9 @@
               </b-nav-item>
               <b-nav-item class="col-6">
                   <span>
-                  <b-img src="./assets/image-avatar.png" rounded="circle" alt="Circle image" height="35px"></b-img>
+                    <router-link to="/login">
+                  <b-img v-bind:src="imageLogin" class="avatar" rounded="circle" alt="Circle image" height="35px"></b-img>
+                    </router-link>
                   </span>
               </b-nav-item>
           </b-navbar-nav>
@@ -201,6 +203,8 @@
 import ProductPage from "@/components/ProductPage.vue";
 import MainPage from "@/components/MainPage.vue";
 import About from "@/views/About.vue";
+// import Carousel from '@/components/Carousel.vue';
+// import AboutUs from '@/components/AboutUs.vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
   name: "Home",
@@ -211,7 +215,7 @@ export default {
   },
   data() {
     return {
-      title: 'Fall Limited Edition Sneakers',
+      title: 'Fall Limited Edition G5Shopping',
       price: "125.000",
       count: 1,
       mainImage: '/assets/image-product-1.jpg',
@@ -233,6 +237,7 @@ export default {
       cartItems: [],
       showImageModal: false,
       slide: 0,
+      loginImage: './assets/image-avatar-pre-login.svg',
       routes: [
   {
     path: '/',
@@ -256,16 +261,34 @@ export default {
     const items = JSON.parse(localStorage.getItem('myCart'));
     console.log('items', items);
     this.cartItems = items;
+    
   window.addEventListener('localstorage-changed', () => {
     this.cartItems = JSON.parse(localStorage.getItem('myCart'));
     this.cartItemsCount;
+  });
+
+      const profileImage = localStorage.getItem("loginImage");
+      this.loginImage=profileImage;
+      
+  window.addEventListener('login-image', () => {
+      console.log(localStorage.getItem("loginImage"));
+    this.loginImage = localStorage.getItem('loginImage');
+    console.log(this.loginImage);
+    this.imageLogin;
   });
   },
   computed: {
     cartItemsCount() {
       return this.cartItems.length;
     },
-    
+    imageLogin () {
+      console.log(this.loginImage)
+      if(this.loginImage==null){
+        localStorage.setItem("loginImage",'./assets/image-avatar-pre-login.svg');
+        return './assets/image-avatar-pre-login.svg';
+      }
+      return this.loginImage;
+    }
   },
   methods: {
     calcPrice(item) {
