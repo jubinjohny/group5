@@ -308,6 +308,8 @@
 <script>
 // @ is an alias to /src
 import ProductPage from "@/components/ProductPage.vue";
+import ProductPage2 from "@/components/ProductPage2.vue";
+import ProductPage3 from "@/components/ProductPage3.vue";
 import MainPage from "@/components/MainPage.vue";
 import About from "@/views/About.vue";
 // import Carousel from '@/components/Carousel.vue';
@@ -345,7 +347,17 @@ export default {
         {
           path: "/product",
           component: ProductPage,
-          name: "Product",
+          name: "Iphone 14",
+        },
+        {
+          path: "/product2",
+          component: ProductPage2,
+          name: "Iphone 13",
+        },
+        {
+          path: "/product3",
+          component: ProductPage3,
+          name: "Iphone 12",
         },
         {
           path: "/about",

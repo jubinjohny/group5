@@ -44,7 +44,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                Apple's iPhone 14 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
+                Apple's iPhone 13 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
               </span>
             </div>
 
@@ -153,8 +153,8 @@ export default {
   },
   data() {
     return {
-      title: 'iPhone 14 (Blue, 512 GB)',
-      price: "2099",
+      title: 'iPhone 13 (Blue, 256 GB)',
+      price: "1599",
       count: 1,
       mainImage: '/assets/image-product-1.jpg',
       images: [
