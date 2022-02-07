@@ -31,11 +31,12 @@
             <b-navbar-nav class="ml-auto d-flex flex-row align-items-center">
               <b-nav-item class="col-6">
                 <b-dropdown
-                  size="xl"
+                  size="lg"
                   variant="link"
                   toggle-class="text-decoration-none"
                   no-caret
                   right
+                  style="padding: 0px 180px 0px 0px;"
                 >
                   <template #button-content>
                     <b-img src="/assets/icon-cart.svg" alt=""></b-img>
@@ -138,6 +139,7 @@
               <b-nav-item class="col-6">
                 <span>
                   <router-link to="/login">
+                    <label style="color:black; font-weight: 900;">{{ userName }} &nbsp;&nbsp;&nbsp;</label>
                     <b-img
                       v-bind:src="imageLogin"
                       class="avatar"
@@ -272,6 +274,7 @@
               <b-nav-item class="col-6">
                 <span>
                   <router-link to="/login">
+                    <label style="color:black; font-weight: 900;">{{ userName }} &nbsp;&nbsp;&nbsp;</label>
                     <b-img
                       v-bind:src="imageLogin"
                       class="avatar"
@@ -340,6 +343,7 @@ export default {
       showImageModal: false,
       slide: 0,
       loginImage: "./assets/image-avatar-pre-login.svg",
+      user: 'Guest',
       routes: [
         {
           path: "/",
@@ -391,17 +395,35 @@ export default {
 
     const profileImage = localStorage.getItem("loginImage");
     this.loginImage = profileImage;
+    
+    const profileName = localStorage.getItem("userName");
+    this.user = profileName;
 
     window.addEventListener("login-image", () => {
       console.log(localStorage.getItem("loginImage"));
+      console.log(localStorage.getItem("userName"));
       this.loginImage = localStorage.getItem("loginImage");
       console.log(this.loginImage);
+      this.user = localStorage.getItem("userName");
+      console.log(this.user);
       this.imageLogin;
+      this.userName;
     });
   },
   computed: {
     cartItemsCount() {
       return this.cartItems.length;
+    },
+    userName() {
+      console.log(this.user);
+      if (this.user == null) {
+        localStorage.setItem(
+          "userName",
+          "Guest"
+        );
+        return "Guest";
+      }
+      return this.user;
     },
     imageLogin() {
       console.log(this.loginImage);

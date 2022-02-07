@@ -58,6 +58,12 @@ export default {
         localStorage.setItem("loginImage", loginImage);
         console.log(localStorage.getItem("loginImage"));
         window.dispatchEvent(new CustomEvent("login-image"));
+
+        var user = "Admin";
+        localStorage.setItem("userName", user);
+        console.log(localStorage.getItem("userName"));
+        window.dispatchEvent(new CustomEvent("login-image"));
+        this.$router.push({name: 'Home'}) 
       }
     },
   },
