@@ -12,15 +12,11 @@
         <div class="row">
           <div class="col-xs-15 col-md-15 col-md-offset-2">
             <div class="text-center">
-              <h1>A whole page just about me!</h1>
+              <h1>G5 Shopping</h1>
               <br />
             </div>
             <p class="section-container-spacer">
-              My name is Jubin Johny. I am professional Web Designer and Web
-              Developer. Since beginning my journey as a freelance designer
-              nearly 2 years ago, I have done remote work for agencies,
-              consulted for start-ups, and collaborated with talented people to
-              create digital products for both business and consumer use.
+              G5 shopping is a product distributor company of Apple products located in suthern Ontario aims to provide various Apple products to the end users in a cheaper price. We have direct collaboration with Apple Inc, which makes us to sell Apple products to the end users in a cheaper price compared to other retailers.
             </p>
             <!-- will be reading from index.js -->
 
@@ -36,20 +32,10 @@
 
           <div class="col-xs-15 col-md-15 col-md-offset-2">
             <p>
-              I have worked on a multitude of web and cloud based projects for a
-              range of clients providing Web Design (Photoshop, Illustrator,
-              InDesign) and Development (PHP, HTML, CSS, JS, Angular, jQuery,
-              WordPress, Bootstrap, Responsive Layouts), e-commerce Solutions,
-              Graphic Designs and Cloud based solutions (AWS, GCP, Azure,
-              Digital Ocean). During my Mobile Solutions Degree, I studied
-              Application Development on both Android and IOS along with Web
-              Designing and UI/UX, and therefore have a keen understanding of
-              wireframes, sitemaps and user experience design, which I put to
-              good use on every project I work on.<br />I am quietly confident,
-              naturally curious, and perpetually working on improving my chops
-              one design problem at a time. I currently live in Canada. I am
-              always available to discuss your project over the phone or via
-              e-mail.
+              G5 Shopping started in the year 2020 as a startup company and we have delivered around 2000 apple products to the customers in a cheaper price as of now. People prefer G5 Shopping as a reason of extended warrenty provided to people as part from us. We also provide phone cases, phone charger and screen cards for free during purchase and people can always approch us if they have damages with phone cases, phone charger and screen card. In such cases, we help to replace these items with 25% off comared to the actual price. Our basic protection plan for apple devices consist of a basic plan and a premium plan. Te basic plan is for free and it covers the  damages of the product for 3 years. The premium plan comes with a 5 year plan, it covers device damages for 5 years which costs 5% of the product price.
+            </p>
+            <p>
+              Enjoy the new feeling of shopping.
             </p>
             <small class="signature pull-right">Team G5<br /></small><br />
           </div>
