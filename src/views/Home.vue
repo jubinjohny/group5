@@ -347,17 +347,17 @@ export default {
         {
           path: "/product",
           component: ProductPage,
-          name: "Iphone 14",
+          name: "iPhone 14",
         },
         {
           path: "/product2",
           component: ProductPage2,
-          name: "Iphone 13",
+          name: "iPhone 13",
         },
         {
           path: "/product3",
           component: ProductPage3,
-          name: "Iphone 12",
+          name: "iPhone 12",
         },
         {
           path: "/about",

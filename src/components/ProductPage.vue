@@ -156,12 +156,12 @@ export default {
       title: 'iPhone 14 (Blue, 512 GB)',
       price: "2099",
       count: 1,
-      mainImage: '/assets/image-product-1.jpg',
+      mainImage: '/assets/iphone14_44.png',
       images: [
-        '/assets/image-product-1.jpg',
-        '/assets/image-product-2.jpg',
-        '/assets/image-product-3.jpg',
-        '/assets/image-product-4.jpg'
+        '/assets/iphone14_44.jpg',
+        '/assets/iphone14_22.jpg',
+        '/assets/iphone14_33.jpg',
+        '/assets/iphone14_11.png'
       ],
       cartItems: [],
       showImageModal: false,
