@@ -39,7 +39,7 @@
                                       Cart
                                   </span>
                               </div>
-                              <div class="col-12 px-1 mt-3" style="max-height: 200px; overflow: auto">
+                              <div class="col-11 px-1 mt-3" style="max-height: 200px; overflow: auto;">
                                 <div v-if="cartItems && cartItems.length > 0">
                                     <div v-for="(item, index) in cartItems" :key="index" class="d-flex flex-row justify-content-between my-3">
                                       <div class="col-3 px-0 text-center">
@@ -89,8 +89,10 @@
               </b-nav-item>
               <b-nav-item class="col-6">
                   <span>
+                    <router-link to="/login">
                   <b-img src="./assets/image-avatar.png" class="avatar" rounded="circle" alt="Circle image" height="40px"></b-img>
-                  </span>
+                    </router-link>
+                    </span>
             </b-nav-item>
           </b-navbar-nav>
 
@@ -199,6 +201,7 @@
 import ProductPage from "@/components/ProductPage.vue";
 import MainPage from "@/components/MainPage.vue";
 import About from "@/views/About.vue";
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
   name: "Home",
   props: {
