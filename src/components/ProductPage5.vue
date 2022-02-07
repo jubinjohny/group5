@@ -32,7 +32,7 @@
           <div class="container">
             <div>  
               <span style="font-size: 13px; letter-spacing: 1px; color: hsl(229, 100%, 55%); font-weight: 700">
-                Apple 
+                Apple M1
               </span>  
             </div>
 
@@ -44,7 +44,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                Apple's iPhone 12 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
+                M1 Pro delivers game-changing performance with amazing battery life. It features up to 10 CPU cores and up to 16 GPU cores, as well as a 16-core Neural Engine and a powerful media engine that can play as many as 4 streams of 8K video. Delivering 200GB/s of memory bandwidth, M1 Pro can be configured with up to 32GB of unified memory to handle complex professional workflows.
               </span>
             </div>
 
@@ -153,7 +153,7 @@ export default {
   },
   data() {
     return {
-      title: 'Macbook Pro (M1, 2021)',
+      title: 'MacBook Pro (M1 Chip, 2021)',
       price: "1099",
       count: 1,
       mainImage: '/assets/macbook_m1_1.jpg',

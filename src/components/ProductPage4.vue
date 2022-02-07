@@ -32,7 +32,7 @@
           <div class="container">
             <div>  
               <span style="font-size: 13px; letter-spacing: 1px; color: hsl(229, 100%, 55%); font-weight: 700">
-                Apple 
+                Apple M2
               </span>  
             </div>
 
@@ -44,7 +44,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                Apple's iPhone 12 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
+                When you need the highest level of performance ever in a Mac notebook, there’s M2 Pro. It allows you to max out the performance of MacBook Pro with double the GPU core count and memory bandwidth of M2 Pro, and a more powerful media engine that can play up to 7 streams of 8K video. You can configure M2 Pro with up to 64GB of unified memory, enabling your MacBook Pro to work faster and handle massive files with ease.
               </span>
             </div>
 
@@ -153,7 +153,7 @@ export default {
   },
   data() {
     return {
-      title: 'Macbook Pro (M2, 2022)',
+      title: 'MacBook Pro (M2 Chip, 2022)',
       price: "4999.99",
       count: 1,
       mainImage: '/assets/macbook_1.jpg',
