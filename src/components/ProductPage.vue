@@ -44,7 +44,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                Apple's iPhone 14 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
+                6.1 and 6.7-inch sizes, No notch, Pill-shaped camera cutout, No rear camera bump, A16 chip, Qualcomm X65 modem
               </span>
             </div>
 

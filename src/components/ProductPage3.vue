@@ -44,7 +44,14 @@
 
             <div class="my-3">
               <span class="text-muted">
-                Apple's iPhone 12 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.
+                6.1-inch (15.5 cm diagonal) Super Retina XDR display
+Ceramic Shield, tougher than any smartphone glass
+A14 Bionic chip, the fastest chip ever in a smartphone
+Advanced dual-camera system with 12MP Ultra Wide and Wide cameras; Night mode, Deep Fusion, Smart HDR 3, 4K Dolby Vision HDR recording
+12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording
+Industry-leading IP68 water resistance
+Supports MagSafe accessories for easy attach and faster wireless charging
+iOS with redesigned widgets on the Home screen, all-new App Library, App Clips and more
               </span>
             </div>
 
@@ -156,12 +163,12 @@ export default {
       title: 'iPhone 12 (Blue, 128 GB)',
       price: "1099",
       count: 1,
-      mainImage: '/assets/image-product-1.jpg',
+      mainImage: '/assets/iphone12_2.jpg',
       images: [
-        '/assets/image-product-1.jpg',
-        '/assets/image-product-2.jpg',
-        '/assets/image-product-3.jpg',
-        '/assets/image-product-4.jpg'
+        '/assets/iphone12_2.jpg',
+        '/assets/iphone12_3.jpg',
+        '/assets/iphone12_4.jpg',
+        '/assets/iphone12_6.jpg'
       ],
       cartItems: [],
       showImageModal: false,
