@@ -156,7 +156,7 @@ export default {
       title: 'iPhone 14 (Blue, 512 GB)',
       price: "2099",
       count: 1,
-      mainImage: '/assets/iphone14_44.png',
+      mainImage: '/assets/iphone14_44.jpg',
       images: [
         '/assets/iphone14_44.jpg',
         '/assets/iphone14_22.jpg',
