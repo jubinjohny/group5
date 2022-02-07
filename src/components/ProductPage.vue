@@ -57,14 +57,14 @@
                 </div>
                 <div class="">
                   <span class="mx-3 discount px-2 py-1 rounded" style="font-weight: 900; font-size: 14px; color: hsl(229, 100%, 55%)">
-                    5%
+                    2%
                   </span>
                 </div>
               </div>
 
               <div class="col-4 col-md-12 my-1">
                 <span class="" style="font-weight: 700; color: rgb(183, 183, 183); text-decoration: line-through;">
-                  $1153.95
+                  $1326.00
                 </span>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default {
   data() {
     return {
       title: 'iPhone 14 (Blue, 512 GB)',
-      price: "2099",
+      price: "1300",
       count: 1,
       mainImage: '/assets/iphone14_44.jpg',
       images: [
