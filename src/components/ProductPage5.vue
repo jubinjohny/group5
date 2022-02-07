@@ -153,15 +153,15 @@ export default {
   },
   data() {
     return {
-      title: 'iPhone 12 (Blue, 128 GB)',
+      title: 'Macbook Pro (M1, 2021)',
       price: "1099",
       count: 1,
-      mainImage: '/assets/image-product-1.jpg',
+      mainImage: '/assets/macbook_m1_1.jpg',
       images: [
-        '/assets/image-product-1.jpg',
-        '/assets/image-product-2.jpg',
-        '/assets/image-product-3.jpg',
-        '/assets/image-product-4.jpg'
+        '/assets/macbook_m1_1.jpg',
+        '/assets/macbook_m1_2.jpg',
+        '/assets/macbook_m1_3.jpg',
+        '/assets/macbook_m1_4.jpg'
       ],
       cartItems: [],
       showImageModal: false,
