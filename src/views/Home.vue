@@ -310,6 +310,8 @@
 import ProductPage from "@/components/ProductPage.vue";
 import ProductPage2 from "@/components/ProductPage2.vue";
 import ProductPage3 from "@/components/ProductPage3.vue";
+import ProductPage4 from "@/components/ProductPage4.vue";
+import ProductPage5 from "@/components/ProductPage5.vue";
 import MainPage from "@/components/MainPage.vue";
 import About from "@/views/About.vue";
 // import Carousel from '@/components/Carousel.vue';
@@ -358,6 +360,16 @@ export default {
           path: "/product3",
           component: ProductPage3,
           name: "iPhone 12",
+        },
+        {
+          path: "/product4",
+          component: ProductPage4,
+          name: "Macbook Pro M2",
+        },
+        {
+          path: "/product5",
+          component: ProductPage5,
+          name: "Macbook Pro M1",
         },
         {
           path: "/about",
