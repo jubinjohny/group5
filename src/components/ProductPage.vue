@@ -223,11 +223,7 @@ export default {
 
       this.cartItems = JSON.parse(localStorage.getItem('myCart'));
       console.log(JSON.parse(localStorage.getItem('myCart')).length);
-      window.dispatchEvent(new CustomEvent('localstorage-changed', {
-  detail: {
-    storage: JSON.parse(localStorage.getItem('myCart'))
-  }
-}));
+      window.dispatchEvent(new CustomEvent('localstorage-changed'));
     }
   }
 }

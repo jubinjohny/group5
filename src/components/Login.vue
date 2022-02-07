@@ -6,12 +6,12 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <form>
+        <form >
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label
             >
-            <input
+            <input v-model="username"
               type="email"
               class="form-control"
               id="exampleInputEmail1"
@@ -22,23 +22,13 @@
             <label for="exampleInputPassword1" class="form-label"
               >Password</label
             >
-            <input
+            <input v-model="password"
               type="password"
               class="form-control"
               id="exampleInputPassword1"
             />
           </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Check me out</label
-            >
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" @click="submit" class="btn btn-primary">Login</button>
         </form>
       </div>
       <div class="col-md-3"></div>
@@ -47,7 +37,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'Login',
+  props: {
+
+  },
+  components: {
+  },
+  data() {
+    return {
+      username: '',
+      password: '',
+    }
+  },
+  methods: {
+    submit() {
+      if(this.username=="admin@g5shopping.com" && this.password=="admin"){
+      var loginImage = './assets/image-avatar-post-login.svg';
+      localStorage.setItem("loginImage", loginImage);
+      console.log(localStorage.getItem("loginImage"));
+      window.dispatchEvent(new CustomEvent('login-image'));
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>
