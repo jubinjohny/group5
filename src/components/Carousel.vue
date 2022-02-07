@@ -10,12 +10,7 @@
         <div class="carousel-item active">
           <img class="img-fluid" src="@/assets/iphone13.gif"  width="100%" alt="First slide">
         </div>
-        <div class="carousel-item">
-          <img class="img-fluid" src="@/assets/jum2.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="img-fluid" src="@/assets/jum3.jpg" alt="Third slide">
-        </div>
+
       </div>
     </div>
   </section>
