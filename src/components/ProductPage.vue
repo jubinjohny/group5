@@ -31,7 +31,7 @@
         <div class="col-12 col-md-6 text-left my-3">
           <div class="container">
             <div>  
-              <span style="font-size: 13px; letter-spacing: 1px; color: hsl(26, 100%, 55%); font-weight: 700">
+              <span style="font-size: 13px; letter-spacing: 1px; color: hsl(229, 100%, 55%); font-weight: 700">
                 SNEAKER COMPANY 
               </span>  
             </div>
@@ -57,7 +57,7 @@
                   </span>
                 </div>
                 <div class="">
-                  <span class="mx-3 discount px-2 py-1 rounded" style="font-weight: 900; font-size: 14px; color: hsl(26, 100%, 55%)">
+                  <span class="mx-3 discount px-2 py-1 rounded" style="font-weight: 900; font-size: 14px; color: hsl(229, 100%, 55%)">
                     50%
                   </span>
                 </div>
@@ -241,7 +241,7 @@ export default {
 
 .discount {
   /* border-radius: 10px; */
-  background-color: hsl(25, 100%, 94%);
+  background-color: hsl(226, 100%, 94%);
 }
 
 .bg-quantity {
@@ -252,22 +252,22 @@ export default {
 }
 
 .bg-add-cart {
-  background-color: hsl(26, 100%, 55%);
+  background-color: hsl(229, 100%, 55%);
   color: white !important;
   border-radius: 10px;
   font-size: 15px;
   padding: 14px;
   transition: 0.3s;
   cursor: pointer;
-  box-shadow: 0px 23px 19px 10px hsl(25, 100%, 94%);
+  box-shadow: 0px 23px 19px 10px hsl(229, 100%, 94%);
 }
 
 .bg-add-cart:hover {
-  background-color: hsl(24, 91%, 86%);
+  background-color: hsl(226, 91%, 86%);
 }
 
 .plus-minus {
-  color: hsl(26, 100%, 55%);
+  color: hsl(229, 100%, 55%);
   cursor: pointer;
 }
 
@@ -284,7 +284,7 @@ export default {
 
 .activess {
   opacity: 0.4 !important;
-  border: 3px solid hsl(26, 100%, 55%) !important;
+  border: 3px solid hsl(229, 100%, 55%) !important;
 }
 
 i {
@@ -297,7 +297,7 @@ i:hover {
 
 /* navbar */
 .avatar:hover {
-    border: 2px solid hsl(26, 100%, 55%) !important;
+    border: 2px solid hsl(229, 100%, 55%) !important;
 }
 
 .category {
@@ -305,7 +305,7 @@ i:hover {
 }
 
 .category:hover {
-    border-bottom: 3px solid hsl(26, 100%, 55%);
+    border-bottom: 3px solid hsl(229, 100%, 55%);
 }
 
 .category:hover .text {
@@ -317,7 +317,7 @@ i:hover {
 }
 
 .checkout-btn:hover {
-  background-color: hsl(24, 91%, 86%) !important;
+  background-color: hsl(226, 97%, 72%) !important;
 }
 
 .cart-count {
@@ -326,7 +326,7 @@ i:hover {
   left: 22px;
   padding: 0px 7px;
   font-size: 9px;
-  background-color: hsl(26, 100%, 55%);
+  background-color: hsl(229, 100%, 55%);
   color: white;
   border-radius: 5px;
 }
