@@ -64,7 +64,7 @@
 
               <div class="col-4 col-md-12 my-1">
                 <span class="" style="font-weight: 700; color: rgb(183, 183, 183); text-decoration: line-through;">
-                  $4850.00
+                  $4999.99
                 </span>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default {
   data() {
     return {
       title: 'MacBook Pro (M2 Chip, 2022)',
-      price: "4999.99",
+      price: "4850.00",
       count: 1,
       mainImage: '/assets/macbook_1.jpg',
       images: [

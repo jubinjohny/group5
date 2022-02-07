@@ -71,7 +71,7 @@ iOS with redesigned widgets on the Home screen, all-new App Library, App Clips a
 
               <div class="col-4 col-md-12 my-1">
                 <span class="" style="font-weight: 700; color: rgb(183, 183, 183); text-decoration: line-through;">
-                  $929.00
+                  $999.99
                 </span>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default {
   data() {
     return {
       title: 'iPhone 12 (Blue, 128 GB)',
-      price: "999",
+      price: "929.00",
       count: 1,
       mainImage: '/assets/iphone12_2.jpg',
       images: [

@@ -64,7 +64,7 @@
 
               <div class="col-4 col-md-12 my-1">
                 <span class="" style="font-weight: 700; color: rgb(183, 183, 183); text-decoration: line-through;">
-                  $1044.00
+                  $1099.99
                 </span>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default {
   data() {
     return {
       title: 'iPhone 13 (Blue, 256 GB)',
-      price: "1099",
+      price: "1044.00",
       count: 1,
       mainImage: '/assets/image-product-1.jpg',
       images: [
