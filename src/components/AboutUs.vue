@@ -20,7 +20,7 @@
            <br>Super Retina XDR display<br><br>
           <br>New Ultra Wide camera reveals more detail in the dark areas of your photos<br><br>
           <br>New Wide camera captures 47% more light for better photos and videos<br><br>
-          <br>New sensor-shift optical image stabilization keeps shots steady even when you’re not<br><br>
+          <br>New sensor-shift image stabilization keeps shots steady even when you’re not<br><br>
           </h5>
       </div>
       <div class="col-6">
