@@ -302,6 +302,7 @@
       </div>
     </div>
     <router-view />
+    <div><Footer /></div>
   </div>
 </template>
 
@@ -314,13 +315,16 @@ import ProductPage4 from "@/components/ProductPage4.vue";
 import ProductPage5 from "@/components/ProductPage5.vue";
 import MainPage from "@/components/MainPage.vue";
 import About from "@/views/About.vue";
+import Footer from "@/components/Footer.vue";
 // import Carousel from '@/components/Carousel.vue';
 // import AboutUs from '@/components/AboutUs.vue';
 import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   name: "Home",
   props: {},
-  components: {},
+  components: {
+    Footer,
+  },
   data() {
     return {
       title: "Fall Limited Edition G5Shopping",
