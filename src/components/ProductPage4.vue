@@ -59,7 +59,7 @@
                   font-weight: 700;
                 "
               >
-                Apple M2
+                Apple
               </span>
             </div>
 
@@ -78,13 +78,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                When you need the highest level of performance ever in a Mac
-                notebook, there’s M2 Pro. It allows you to max out the
-                performance of MacBook Pro with double the GPU core count and
-                memory bandwidth of M2 Pro, and a more powerful media engine
-                that can play up to 7 streams of 8K video. You can configure M2
-                Pro with up to 64GB of unified memory, enabling your MacBook Pro
-                to work faster and handle massive files with ease.
+                {{description}}                
               </span>
             </div>
 
@@ -104,7 +98,7 @@
                       color: hsl(229, 100%, 55%);
                     "
                   >
-                    3%
+                    2%
                   </span>
                 </div>
               </div>
@@ -118,7 +112,7 @@
                     text-decoration: line-through;
                   "
                 >
-                  $4999.99
+                  $1326.00
                 </span>
               </div>
             </div>
@@ -160,8 +154,33 @@
                 </div>
               </div>
             </div>
+
+            <br />
           </div>
         </div>
+      </div>
+      <div class="col-12 text-center mt-3 bg-quantity">
+        <div>
+          <b-form-rating
+            v-model="rating"
+            variant="warning"
+            class="mb-2"
+          ></b-form-rating>
+        </div>
+        <br />
+        <div>
+          <b-form-textarea
+            id="textarea"
+            v-model="text"
+            placeholder="Enter review..."
+            rows="3"
+            max-rows="6"
+          ></b-form-textarea>
+        </div>
+        <br />
+        <b-button type="submit" variant="primary" @click="submitReview"
+          >Submit</b-button
+        >
       </div>
 
       <b-modal
@@ -223,43 +242,119 @@
           </div>
         </div>
       </b-modal>
+      <br />
+      <br />
+      <br />
+      <div style="background-color: grey">
+        <h4>REVIEWS</h4>
+      </div>
+      <br />
+      <div
+        class="col-12 text-center mt-1"
+        style="border-style: dotted dashed solid double"
+        v-for="(review, index) in getReviews"
+        :key="index"
+      >
+        <div class="d-flex flex-row justify-content-between col-md-4">
+          <b-form-rating
+            v-model="review.rating"
+            variant="warning"
+            class="mb-2"
+            disabled
+          ></b-form-rating>
+        </div>
+        <div>
+          <p align="left" class="mt-2 text-left">{{ review.text }}</p>
+        </div>
+        <br />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "ProductPage",
   props: {},
   components: {},
   data() {
     return {
-      title: "MacBook Pro (M2 Chip, 2022)",
-      price: "4850.00",
+      title: "",
+      price: "",
       count: 1,
-      mainImage: "/assets/macbook_1.jpg",
-      images: [
-        "/assets/macbook_1.jpg",
-        "/assets/macbook_2.jpg",
-        "/assets/macbook_3.jpg",
-        "/assets/macbook_4.jpg",
-      ],
+      mainImage: "", 
+      imageTableArray: [],
+      images: [],
+      rating: 0,
+      text: "",
+      reviews: [],
       cartItems: [],
       showImageModal: false,
       slide: 0,
+      product: [],
+      description: ""
     };
   },
-  mounted() {
+  beforeMount() {
+    this.getProductDetails();
+  },
+  async mounted() {
+    
+    this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+           params: {
+             productId: 4,
+           }
+        })
+        .then(function (response) {
+           return response.data;
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
     const items = JSON.parse(localStorage.getItem("myCart"));
     console.log("items123s", items);
     this.cartItems = items;
+    this.getReviews;
   },
   computed: {
-    cartItemsCount() {
-      return this.cartItems.length;
+    getReviews() {
+      return this.reviews;
     },
   },
   methods: {
+    async getProductDetails(){
+    this.product = await axios.get('http://localhost/Group5_Assignment_1_PHP/product.php', {
+           params: {
+             productId: 4,
+           }
+        })
+        .then(function (response) {
+           return response.data[0];
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
+        
+            this.title = this.product.productName;
+      this.price = this.product.productPrice; 
+      this.description = this.product.productDescription; 
+    this.imageTableArray =await axios.get('http://localhost/Group5_Assignment_1_PHP/productImage.php', {
+           params: {
+             productId: 4,
+           }
+        })
+        .then(function (response) {
+          return response.data;
+          })
+        .catch(function (error) {
+           console.log(error);
+        });
+          this.mainImage = this.imageTableArray[0].imageUrl;
+          (this.imageTableArray).forEach(element => {
+            this.images.push(element.imageUrl);
+          });
+    },
     showMainImage() {
       this.showImageModal = true;
     },
@@ -283,12 +378,44 @@ export default {
       this.cartItems.splice(index, 1);
       localStorage.setItem("myCart", JSON.stringify(this.cartItems));
     },
+    async submitReview() {
+    axios.get('http://localhost/Group5_Assignment_1_PHP/addReview.php', {
+           params: {
+             rating: this.rating,
+             text: this.text,
+             productId: 4,
+             email: localStorage.getItem("email")
+           }
+        }) 
+        .then(function (response) {
+          console.log(response.data);
+          })
+        .catch(function (error) {
+           console.log(error);
+        }); 
+        
+        this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+           params: {
+             productId: 4,
+           }
+        })
+        .then(function (response) {
+           return response.data;
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
+        this.getReviews;
+      this.rating = 0;
+      this.text = "";
+    },
     submit() {
       var existingEntries = JSON.parse(localStorage.getItem("myCart"));
 
       if (existingEntries == null) existingEntries = [];
 
       var entry = {
+        productId: 4,
         title: this.title,
         price: this.price,
         quantity: this.count,
