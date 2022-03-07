@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="container">
     <h1>Login</h1>
@@ -41,6 +43,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+ import Router from '../router'
 export default {
   name: "Login",
   props: {},
@@ -49,22 +53,40 @@ export default {
     return {
       username: "",
       password: "",
+      user:[],
     };
   },
   methods: {
-    submit() {
-      if (this.username == "admin@g5shopping.com" && this.password == "admin") {
-        var loginImage = "./assets/image-avatar-post-login.svg";
+    
+    submit: function(){
+      if(this.username != "" && this.password != ""){
+ 
+        axios.get('http://localhost/Group5_Assignment_1_PHP/user.php', {
+           params: {
+             email: this.username,
+             password: this.password
+           }
+        })
+        .then(function (response) {
+           user = response.data[0];
+        var loginImage = user.userImage;
         localStorage.setItem("loginImage", loginImage);
-        console.log(localStorage.getItem("loginImage"));
         window.dispatchEvent(new CustomEvent("login-image"));
 
-        var user = "Admin";
+        var email = user.email;
+        localStorage.setItem("email", email);
+        var user = user.name;
         localStorage.setItem("userName", user);
         console.log(localStorage.getItem("userName"));
         window.dispatchEvent(new CustomEvent("login-image"));
-        this.$router.push({name: 'Home'}) 
+        Router.push({ name: "Home" });
+        })
+        .catch(function (error) {
+           console.log(error);
+        });
+        
       }
+      
     },
   },
 };

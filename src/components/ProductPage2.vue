@@ -78,11 +78,7 @@
 
             <div class="my-3">
               <span class="text-muted">
-                Apple's iPhone 13 features a ceramic shield front, Super Retina
-                XDR display with True Tone and an A15 Bionic chip. The first
-                design change users will notice is the smaller notch. After
-                years of using the same-sized notch to house the Face ID
-                components, Apple has finally reduced its size by 20%.
+                {{description}}                
               </span>
             </div>
 
@@ -102,7 +98,7 @@
                       color: hsl(229, 100%, 55%);
                     "
                   >
-                    5%
+                    2%
                   </span>
                 </div>
               </div>
@@ -116,7 +112,7 @@
                     text-decoration: line-through;
                   "
                 >
-                  $1099.99
+                  $1326.00
                 </span>
               </div>
             </div>
@@ -158,8 +154,33 @@
                 </div>
               </div>
             </div>
+
+            <br />
           </div>
         </div>
+      </div>
+      <div class="col-12 text-center mt-3 bg-quantity">
+        <div>
+          <b-form-rating
+            v-model="rating"
+            variant="warning"
+            class="mb-2"
+          ></b-form-rating>
+        </div>
+        <br />
+        <div>
+          <b-form-textarea
+            id="textarea"
+            v-model="text"
+            placeholder="Enter review..."
+            rows="3"
+            max-rows="6"
+          ></b-form-textarea>
+        </div>
+        <br />
+        <b-button type="submit" variant="primary" @click="submitReview"
+          >Submit</b-button
+        >
       </div>
 
       <b-modal
@@ -221,43 +242,119 @@
           </div>
         </div>
       </b-modal>
+      <br />
+      <br />
+      <br />
+      <div style="background-color: grey">
+        <h4>REVIEWS</h4>
+      </div>
+      <br />
+      <div
+        class="col-12 text-center mt-1"
+        style="border-style: dotted dashed solid double"
+        v-for="(review, index) in getReviews"
+        :key="index"
+      >
+        <div class="d-flex flex-row justify-content-between col-md-4">
+          <b-form-rating
+            v-model="review.rating"
+            variant="warning"
+            class="mb-2"
+            disabled
+          ></b-form-rating>
+        </div>
+        <div>
+          <p align="left" class="mt-2 text-left">{{ review.text }}</p>
+        </div>
+        <br />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "ProductPage",
   props: {},
   components: {},
   data() {
     return {
-      title: "iPhone 13 (Blue, 256 GB)",
-      price: "1044.00",
+      title: "",
+      price: "",
       count: 1,
-      mainImage: "/assets/image-product-1.jpg",
-      images: [
-        "/assets/image-product-1.jpg",
-        "/assets/image-product-2.jpg",
-        "/assets/image-product-3.jpg",
-        "/assets/image-product-4.jpg",
-      ],
+      mainImage: "", 
+      imageTableArray: [],
+      images: [],
+      rating: 0,
+      text: "",
+      reviews: [],
       cartItems: [],
       showImageModal: false,
       slide: 0,
+      product: [],
+      description: ""
     };
   },
-  mounted() {
+  beforeMount() {
+    this.getProductDetails();
+  },
+  async mounted() {
+    
+    this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+           params: {
+             productId: 2,
+           }
+        })
+        .then(function (response) {
+           return response.data;
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
     const items = JSON.parse(localStorage.getItem("myCart"));
     console.log("items123s", items);
     this.cartItems = items;
+    this.getReviews;
   },
   computed: {
-    cartItemsCount() {
-      return this.cartItems.length;
+    getReviews() {
+      return this.reviews;
     },
   },
   methods: {
+    async getProductDetails(){
+    this.product = await axios.get('http://localhost/Group5_Assignment_1_PHP/product.php', {
+           params: {
+             productId: 2,
+           }
+        })
+        .then(function (response) {
+           return response.data[0];
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
+        
+            this.title = this.product.productName;
+      this.price = this.product.productPrice; 
+      this.description = this.product.productDescription; 
+    this.imageTableArray =await axios.get('http://localhost/Group5_Assignment_1_PHP/productImage.php', {
+           params: {
+             productId: 2,
+           }
+        })
+        .then(function (response) {
+          return response.data;
+          })
+        .catch(function (error) {
+           console.log(error);
+        });
+          this.mainImage = this.imageTableArray[0].imageUrl;
+          (this.imageTableArray).forEach(element => {
+            this.images.push(element.imageUrl);
+          });
+    },
     showMainImage() {
       this.showImageModal = true;
     },
@@ -281,12 +378,44 @@ export default {
       this.cartItems.splice(index, 1);
       localStorage.setItem("myCart", JSON.stringify(this.cartItems));
     },
+    async submitReview() {
+    axios.get('http://localhost/Group5_Assignment_1_PHP/addReview.php', {
+           params: {
+             rating: this.rating,
+             text: this.text,
+             productId: 2,
+             email: localStorage.getItem("email")
+           }
+        }) 
+        .then(function (response) {
+          console.log(response.data);
+          })
+        .catch(function (error) {
+           console.log(error);
+        }); 
+        
+        this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+           params: {
+             productId: 2,
+           }
+        })
+        .then(function (response) {
+           return response.data;
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
+        this.getReviews;
+      this.rating = 0;
+      this.text = "";
+    },
     submit() {
       var existingEntries = JSON.parse(localStorage.getItem("myCart"));
 
       if (existingEntries == null) existingEntries = [];
 
       var entry = {
+        productId: 2,
         title: this.title,
         price: this.price,
         quantity: this.count,
