@@ -36,7 +36,7 @@
                   toggle-class="text-decoration-none"
                   no-caret
                   right
-                  style="padding: 0px 180px 0px 0px;"
+                  style="padding: 0px 180px 0px 0px"
                 >
                   <template #button-content>
                     <b-img src="/assets/icon-cart.svg" alt=""></b-img>
@@ -119,27 +119,31 @@
                         </div>
                       </div>
                       <div class="col-12 my-3">
-                        <button
-                          class="p-3 text-white border-0 w-100 checkout-btn"
-                          style="
-                            background-color: hsl(229, 100%, 55%);
-                            font-weight: 700;
-                            font-size: 14px;
-                            border-radius: 10px;
-                          "
-                        >
-                          Checkout
-                        </button>
+                        <router-link to="/checkout">
+                          <button
+                            class="p-3 text-white border-0 w-100 checkout-btn"
+                            style="
+                              background-color: hsl(229, 100%, 55%);
+                              font-weight: 700;
+                              font-size: 14px;
+                              border-radius: 10px;
+                            "
+                          >
+                            Checkout
+                          </button>
+                        </router-link>
                       </div>
                     </div>
                   </div>
                   <!-- </b-dropdown-item> -->
                 </b-dropdown>
               </b-nav-item>
-              <b-nav-item class="col-6">
+              <b-nav-item>
                 <span>
-                  <router-link to="/login">
-                    <label style="color:black; font-weight: 900;">{{ userName }} &nbsp;&nbsp;&nbsp;</label>
+                  <router-link v-if="userName === `Guest`" to="/login">
+                    <label style="color: black; font-weight: 900"
+                      >{{ userName }} &nbsp;&nbsp;&nbsp;</label
+                    >
                     <b-img
                       v-bind:src="imageLogin"
                       class="avatar"
@@ -148,7 +152,22 @@
                       height="40px"
                     ></b-img>
                   </router-link>
+                  <div v-else>
+                    <label style="color: black; font-weight: 900"
+                      >{{ userName }} &nbsp;&nbsp;&nbsp;</label
+                    >
+                    <b-img
+                      v-bind:src="imageLogin"
+                      class="avatar"
+                      rounded="circle"
+                      alt="Circle image"
+                      height="40px"
+                    ></b-img>
+                  </div>
                 </span>
+              </b-nav-item>
+              <b-nav-item v-if="userName !== `Guest`">
+                <b-button variant="primary" @click="logout()">Logout</b-button>
               </b-nav-item>
             </b-navbar-nav>
           </b-navbar>
@@ -271,10 +290,12 @@
                   </div>
                 </b-dropdown>
               </b-nav-item>
-              <b-nav-item class="col-6">
+              <b-nav-item>
                 <span>
-                  <router-link to="/login">
-                    <label style="color:black; font-weight: 900;">{{ userName }} &nbsp;&nbsp;&nbsp;</label>
+                  <router-link v-if="userName === `Guest`" to="/login">
+                    <label style="color: black; font-weight: 900"
+                      >{{ userName }} &nbsp;&nbsp;&nbsp;</label
+                    >
                     <b-img
                       v-bind:src="imageLogin"
                       class="avatar"
@@ -283,7 +304,23 @@
                       height="35px"
                     ></b-img>
                   </router-link>
+
+                  <div v-else>
+                    <label style="color: black; font-weight: 900"
+                      >{{ userName }} &nbsp;&nbsp;&nbsp;</label
+                    >
+                    <b-img
+                      v-bind:src="imageLogin"
+                      class="avatar"
+                      rounded="circle"
+                      alt="Circle image"
+                      height="35px"
+                    ></b-img>
+                  </div>
                 </span>
+              </b-nav-item>
+              <b-nav-item v-if="userName !== `Guest`">
+                <b-button variant="primary" @click="logout()">Logout</b-button>
               </b-nav-item>
             </b-navbar-nav>
 
@@ -344,10 +381,8 @@ export default {
       mainCategory: "Collections",
       categories: ["Collections", "Men", "Women", "About", "Contact"],
       cartItems: [],
-      showImageModal: false,
-      slide: 0,
       loginImage: "./assets/image-avatar-pre-login.svg",
-      user: 'Guest',
+      user: "Guest",
       routes: [
         {
           path: "/",
@@ -391,7 +426,7 @@ export default {
     const items = JSON.parse(localStorage.getItem("myCart"));
     console.log("items", items);
     this.cartItems = items;
-
+    this.loginImage = JSON.stringify(localStorage.getItem("loginImage"));
     window.addEventListener("localstorage-changed", () => {
       this.cartItems = JSON.parse(localStorage.getItem("myCart"));
       this.cartItemsCount;
@@ -399,7 +434,7 @@ export default {
 
     const profileImage = localStorage.getItem("loginImage");
     this.loginImage = profileImage;
-    
+
     const profileName = localStorage.getItem("userName");
     this.user = profileName;
 
@@ -421,16 +456,12 @@ export default {
     userName() {
       console.log(this.user);
       if (this.user == null) {
-        localStorage.setItem(
-          "userName",
-          "Guest"
-        );
+        localStorage.setItem("userName", "Guest");
         return "Guest";
       }
       return this.user;
     },
     imageLogin() {
-      console.log(this.loginImage);
       if (this.loginImage == null) {
         localStorage.setItem(
           "loginImage",
@@ -442,6 +473,13 @@ export default {
     },
   },
   methods: {
+    logout(){
+      window.localStorage.clear();
+      this.user = null;
+      this.userName;
+      this.loginImage = null;
+      this.loginImage;
+    },
     calcPrice(item) {
       return parseFloat(
         parseFloat(item.price).toFixed(2) * item.quantity
@@ -450,6 +488,7 @@ export default {
     deleteItem(item, index) {
       this.cartItems.splice(index, 1);
       localStorage.setItem("myCart", JSON.stringify(this.cartItems));
+      window.dispatchEvent(new CustomEvent("localstorage-changed"));
     },
   },
 };

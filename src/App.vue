@@ -3,7 +3,8 @@
     <Home />
   </div>
 </template>
-
+<script src="vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 import Home from "./views/Home.vue";
 
