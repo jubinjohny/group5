@@ -17,6 +17,12 @@ if(isset($_GET['productId'])){
             echo json_encode($response);
             die;
         }
+        else{
+            echo "Invalid";
+        }
+    }
+    else{
+        echo "Invalid";
     }
 }
 else{
