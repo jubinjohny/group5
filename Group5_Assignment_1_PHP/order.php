@@ -2,7 +2,7 @@
 
 include "connect.php";
 
-if(isset($_GET['orderTotal'])){
+if(isset($_GET['orderTotal']) && $_GET['email'])){
 	$orderTotal=$_GET['orderTotal'];
     $email=$_GET['email'];
     if(!empty($orderTotal)){
