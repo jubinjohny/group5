@@ -14,6 +14,10 @@ if(isset($_GET['productId'])){
 		$fetchdata=mysqli_query($con, $sql);
         echo $fetchdata;
     }
+    else{
+        echo "Invalid";
+    }
+    
 }
 else{
     echo "Invalid";

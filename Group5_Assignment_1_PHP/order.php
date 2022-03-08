@@ -11,6 +11,9 @@ if(isset($_GET['orderTotal'])){
 		$fetchdata=mysqli_query($con, $sql);
         echo $fetchdata;
     }
+    else{
+        echo "Invalid";
+    }
 }
 else{
     echo "Invalid";
