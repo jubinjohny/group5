@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 11:55 PM
+-- Generation Time: Mar 08, 2022 at 03:53 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,30 @@ INSERT INTO `cart` (`cartId`, `productId`, `cartItemQty`, `email`, `price`, `tot
 (8, 2, 1, 'Guest', 1044, 1044),
 (9, 4, 1, 'admin@g5shopping.com', 4850, 4850),
 (10, 5, 1, 'admin@g5shopping.com', 3938, 3938),
-(11, 3, 1, 'admin@g5shopping.com', 929, 929);
+(11, 3, 1, 'admin@g5shopping.com', 929, 929),
+(12, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(13, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(14, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(15, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(16, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(17, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(18, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(19, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(20, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(21, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(22, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(23, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(24, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(25, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(26, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(27, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(28, 5, 1, 'Guest', 3938, 3938),
+(29, 5, 1, 'Guest', 3938, 3938),
+(30, 5, 1, 'Guest', 3938, 3938),
+(31, 2, 1, 'admin@g5shopping.com', 1044, 1044),
+(32, 1, 1, 'admin@g5shopping.com', 1300, 1300),
+(33, 1, 1, 'admin@g5shopping.com', 1300, 1300),
+(34, 2, 1, 'admin@g5shopping.com', 1044, 1044);
 
 -- --------------------------------------------------------
 
@@ -103,7 +126,22 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`email`, `orderId`, `orderTotal`) VALUES
 ('Guest', 6, 2344),
-('admin@g5shopping.com', 7, 9717);
+('admin@g5shopping.com', 7, 9717),
+('admin@g5shopping.com', 8, 2088),
+('admin@g5shopping.com', 9, 8788),
+('admin@g5shopping.com', 10, 1858),
+('Guest', 11, 3938),
+('Guest', 12, 3938),
+('Guest', 13, 3938),
+('admin@g5shopping.com', 14, 1044),
+('admin@g5shopping.com', 15, 2600),
+('admin@g5shopping.com', 16, 2600),
+('admin@g5shopping.com', 17, 2600),
+('admin@g5shopping.com', 18, 2600),
+('admin@g5shopping.com', 19, 1044),
+('admin@g5shopping.com', 20, 1044),
+('admin@g5shopping.com', 21, 1044),
+('admin@g5shopping.com', 22, 1044);
 
 -- --------------------------------------------------------
 
@@ -148,11 +186,14 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`reviewId`, `email`, `productId`, `rating`, `text`) VALUES
-(1, 'admin@g5shopping.com', 1, 4, 'Super'),
-(2, 'admin@g5shopping.com', 1, 4, 'Kollaam Poli Saadanam'),
-(3, 'admin@g5shopping.com', 1, 1, 'Kollilla'),
-(4, 'admin@g5shopping.com', 1, 2, 'Appy Saadanam'),
-(5, 'admin@g5shopping.com', 1, 3, 'Saarilla adjust cheyyam');
+(1, 'admin@g5shopping.com', 1, 4, 'Good one!'),
+(2, 'admin@g5shopping.com', 1, 4, 'Nice product'),
+(3, 'admin@g5shopping.com', 1, 1, 'liked a lot!'),
+(4, 'admin@g5shopping.com', 1, 2, 'Amazing!'),
+(5, 'admin@g5shopping.com', 1, 3, 'Its not worth of money'),
+(13, '', 2, 3, ''),
+(14, 'admin@g5shopping.com', 2, 3, 'great features'),
+(23, 'admin@g5shopping.com', 3, 5, 'Awesome phone');
 
 -- --------------------------------------------------------
 
@@ -222,19 +263,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `orderId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewId` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `reviewId` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
