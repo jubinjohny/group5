@@ -61,7 +61,7 @@ export default {
     submit: function(){
       if(this.username != "" && this.password != ""){
  
-        axios.get('http://localhost/Group5_Assignment_1_PHP/user.php', {
+        axios.get('http://localhost:8080/api/users', {
            params: {
              email: this.username,
              password: this.password
