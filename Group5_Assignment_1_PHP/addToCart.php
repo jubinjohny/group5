@@ -2,7 +2,7 @@
 
 include "connect.php";
 
-if(isset($_GET['productId']) && $_GET['cartItemQty']) && $_GET['email']) && $_GET['price']) && $_GET['totalPrice'])){
+if(isset($_GET['productId']) && isset($_GET['cartItemQty']) && isset($_GET['email']) && isset($_GET['price']) && isset($_GET['totalPrice'])){
 	$productId=$_GET['productId'];
     $cartItemQty=$_GET['cartItemQty'];
     $email=$_GET['email'];
