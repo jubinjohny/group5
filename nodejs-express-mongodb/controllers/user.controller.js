@@ -4,14 +4,13 @@ const User = db.user;
 exports.findOne = (req, res) => {
     const email = req.query.email;
     const password = req.query.password;
-    User.find({email: email})
+    User.findOne({email: email, password: password})
       .then(data => {
-        console.log(data)
         if (!data)
           res.status(404).send({ message: "Not found User with email " + email });
         else
         {
-                res.send(data);
+          res.send(data);
         }
       })
       .catch(err => {

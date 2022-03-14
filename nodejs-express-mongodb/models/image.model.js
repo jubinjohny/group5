@@ -1,10 +1,9 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
-        email: String,
-        password: String,
-        name: String,
-        userImage: String,
+        imageId: Number,
+        productId: Number,
+        imageUrl: String,
       },
       { timestamps: true }
     );
@@ -13,6 +12,6 @@ module.exports = mongoose => {
       object.id = _id;
       return object;
     });
-    const User = mongoose.model("users", schema, "user");
-    return User;
+    const Image = mongoose.model("images", schema, "image");
+    return Image;
   };

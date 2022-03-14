@@ -301,7 +301,7 @@ export default {
   },
   async mounted() {
     
-    this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+    this.reviews = await axios.get('http://localhost:8080/api/review', {
            params: {
              productId: 1,
            }
@@ -324,6 +324,22 @@ export default {
   },
   methods: {
     async getProductDetails(){
+    this.imageTableArray =await axios.get('http://localhost:8080/api/image', {
+           params: {
+             productId: 1,
+           }
+        })
+        .then(function (response) {
+          console.log(response.data);
+          return response.data;
+          })
+        .catch(function (error) {
+           console.log(error);
+        });
+          this.mainImage = this.imageTableArray[0].imageUrl;
+          (this.imageTableArray).forEach(element => {
+            this.images.push(element.imageUrl);
+          });
     this.product = await axios.get('http://localhost/Group5_Assignment_1_PHP/product.php', {
            params: {
              productId: 1,
@@ -339,21 +355,6 @@ export default {
             this.title = this.product.productName;
       this.price = this.product.productPrice; 
       this.description = this.product.productDescription; 
-    this.imageTableArray =await axios.get('http://localhost/Group5_Assignment_1_PHP/productImage.php', {
-           params: {
-             productId: 1,
-           }
-        })
-        .then(function (response) {
-          return response.data;
-          })
-        .catch(function (error) {
-           console.log(error);
-        });
-          this.mainImage = this.imageTableArray[0].imageUrl;
-          (this.imageTableArray).forEach(element => {
-            this.images.push(element.imageUrl);
-          });
     },
     showMainImage() {
       this.showImageModal = true;

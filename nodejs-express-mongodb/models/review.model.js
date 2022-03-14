@@ -1,10 +1,11 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
+        reviewId: Number,
         email: String,
-        password: String,
-        name: String,
-        userImage: String,
+        productId: Number,
+        rating: Number,
+        text: String,
       },
       { timestamps: true }
     );
@@ -13,6 +14,6 @@ module.exports = mongoose => {
       object.id = _id;
       return object;
     });
-    const User = mongoose.model("users", schema, "user");
+    const User = mongoose.model("reviews", schema, "review");
     return User;
   };

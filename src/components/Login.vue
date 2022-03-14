@@ -61,14 +61,14 @@ export default {
     submit: function(){
       if(this.username != "" && this.password != ""){
  
-        axios.get('http://localhost:8080/api/users', {
+        axios.get('http://localhost:8080/api/user', {
            params: {
              email: this.username,
              password: this.password
            }
         })
         .then(function (response) {
-           user = response.data[0];
+           user = response.data;
         var loginImage = user.userImage;
         localStorage.setItem("loginImage", loginImage);
         window.dispatchEvent(new CustomEvent("login-image"));
