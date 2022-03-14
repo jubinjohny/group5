@@ -1,7 +1,7 @@
 const db = require("../models");
 const Product = db.product;
 // Find a single User with an id
-exports.findOne = (req, res) => {
+exports.findOneProduct = (req, res) => {
     const productId = req.query.productId;
     Product.findOne({productId: productId})
       .then(data => {

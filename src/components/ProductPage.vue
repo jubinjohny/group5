@@ -346,7 +346,7 @@ export default {
            }
         })
         .then(function (response) {
-           return response.data[0];
+           return response.data;
                 })
         .catch(function (error) {
            console.log(error);

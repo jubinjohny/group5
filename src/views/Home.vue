@@ -274,6 +274,7 @@
                         </div>
                       </div>
                       <div class="col-12 my-3">
+                        <router-link to="/checkout">
                         <button
                           class="p-3 text-white border-0 w-100 checkout-btn"
                           style="
@@ -285,6 +286,7 @@
                         >
                           Checkout
                         </button>
+                        </router-link>
                       </div>
                     </div>
                   </div>

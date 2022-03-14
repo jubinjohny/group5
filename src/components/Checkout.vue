@@ -87,8 +87,8 @@
       <br />
       <br />
       <p>Your cart is empty, fill it up!</p>
-      <button class="pay-with-stripe">
-        <nuxt-link exact to="/">Back Home</nuxt-link>
+      <button Primary>
+        <router-link to="/">Back Home</router-link>
       </button>
     </section>
     <br />

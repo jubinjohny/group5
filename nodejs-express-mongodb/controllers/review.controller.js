@@ -5,7 +5,7 @@ exports.findAll = (req, res) => {
     const productId = req.query.productId;
     Review.find({productId: productId})
       .then(data => {
-        if (!data)
+        if (!data || data.length==0)
           res.status(404).send({ message: "Not found Review for product with " + productId });
         else
         {

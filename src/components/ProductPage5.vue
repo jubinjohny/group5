@@ -301,7 +301,7 @@ export default {
   },
   async mounted() {
     
-    this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+    this.reviews = await axios.get('http://localhost:8080/api/review', {
            params: {
              productId: 5,
            }
@@ -324,27 +324,13 @@ export default {
   },
   methods: {
     async getProductDetails(){
-    this.product = await axios.get('http://localhost/Group5_Assignment_1_PHP/product.php', {
+    this.imageTableArray =await axios.get('http://localhost:8080/api/image', {
            params: {
              productId: 5,
            }
         })
         .then(function (response) {
-           return response.data[0];
-                })
-        .catch(function (error) {
-           console.log(error);
-        });
-        
-            this.title = this.product.productName;
-      this.price = this.product.productPrice; 
-      this.description = this.product.productDescription; 
-    this.imageTableArray =await axios.get('http://localhost/Group5_Assignment_1_PHP/productImage.php', {
-           params: {
-             productId: 5,
-           }
-        })
-        .then(function (response) {
+          console.log(response.data);
           return response.data;
           })
         .catch(function (error) {
@@ -354,6 +340,21 @@ export default {
           (this.imageTableArray).forEach(element => {
             this.images.push(element.imageUrl);
           });
+    this.product = await axios.get('http://localhost:8080/api/product', {
+           params: {
+             productId: 5,
+           }
+        })
+        .then(function (response) {
+           return response.data;
+                })
+        .catch(function (error) {
+           console.log(error);
+        });
+        
+            this.title = this.product.productName;
+      this.price = this.product.productPrice; 
+      this.description = this.product.productDescription; 
     },
     showMainImage() {
       this.showImageModal = true;
@@ -379,7 +380,7 @@ export default {
       localStorage.setItem("myCart", JSON.stringify(this.cartItems));
     },
     async submitReview() {
-    axios.get('http://localhost/Group5_Assignment_1_PHP/addReview.php', {
+    axios.get('http://localhost:8080/api/addReview', {
            params: {
              rating: this.rating,
              text: this.text,
@@ -394,7 +395,7 @@ export default {
            console.log(error);
         }); 
         
-        this.reviews = await axios.get('http://localhost/Group5_Assignment_1_PHP/reviews.php', {
+        this.reviews = await axios.get('http://localhost:8080/api/review', {
            params: {
              productId: 5,
            }
