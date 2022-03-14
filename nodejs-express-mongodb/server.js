@@ -17,6 +17,10 @@ app.get("/", (req, res) => {
 require("./routes/user.routes")(app)
 require("./routes/review.routes")(app)
 require("./routes/image.routes")(app)
+require("./routes/product.routes")(app)
+require("./routes/addToCart.routes")(app)
+require("./routes/order.routes")(app)
+require("./routes/addReview.routes")(app)
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

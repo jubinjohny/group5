@@ -1,7 +1,7 @@
 module.exports = app => {
-    const user = require("../controllers/addReview.controller.js");
+    const addReview = require("../controllers/addReview.controller.js");
     var router = require("express").Router();
     // Retrieve all Users
-    router.get("/", addReview.findOne);
+    router.get("/", addReview.create);
     app.use('/api/addReview', router);
   };

@@ -14,6 +14,6 @@ module.exports = mongoose => {
       object.id = _id;
       return object;
     });
-    const User = mongoose.model("reviews", schema, "review");
-    return User;
+    const Review = mongoose.model("reviews", schema, "review");
+    return Review;
   };

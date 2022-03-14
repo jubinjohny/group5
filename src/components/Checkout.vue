@@ -233,7 +233,7 @@ export default {
         }
       this.cartItems.forEach((item) => {
         var tPrice =item.quantity * item.price;
-          axios.get('http://localhost/Group5_Assignment_1_PHP/addToCart.php', {
+          axios.get('http://localhost:8080/api/addToCart', {
            params: {
              productId: item.productId,
              cartItemQty: item.quantity,
@@ -250,7 +250,7 @@ export default {
         });
         });
         
-          axios.get('http://localhost/Group5_Assignment_1_PHP/order.php', {
+          axios.get('http://localhost:8080/api/order', {
            params: {
              email: email,
              orderTotal: this.total
