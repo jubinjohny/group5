@@ -14,12 +14,6 @@ namespace Shopping.Data
         {
         }
 
-        public DbSet<Shopping.Models.Cart> Cart { get; set; }
-
-        public DbSet<Shopping.Models.Order> Order { get; set; }
-
-        public DbSet<Shopping.Models.User> User { get; set; }
-
         public DbSet<Shopping.Models.image> image { get; set; }
 
         public DbSet<Shopping.Models.product> product { get; set; }
