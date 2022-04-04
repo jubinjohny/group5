@@ -301,10 +301,8 @@ export default {
   },
   async mounted() {
     
-    this.reviews = await axios.get('http://localhost:8080/api/review', {
-           params: {
-             productId: 3,
-           }
+    this.reviews = await axios.post('http://localhost:40541/api/reviews', {
+             productId: 3
         })
         .then(function (response) {
            return response.data;
@@ -324,10 +322,8 @@ export default {
   },
   methods: {
     async getProductDetails(){
-    this.imageTableArray =await axios.get('http://localhost:8080/api/image', {
-           params: {
+    this.imageTableArray =await axios.post('http://localhost:40541/api/images', {
              productId: 3,
-           }
         })
         .then(function (response) {
           console.log(response.data);
@@ -340,18 +336,16 @@ export default {
           (this.imageTableArray).forEach(element => {
             this.images.push(element.imageUrl);
           });
-    this.product = await axios.get('http://localhost:8080/api/product', {
-           params: {
-             productId: 3,
-           }
+    this.product = await axios.post('http://localhost:40541/api/products', {
+             productId: 3
         })
         .then(function (response) {
-           return response.data;
+           return response.data[0];
                 })
         .catch(function (error) {
            console.log(error);
         });
-        
+        console.log(this.product.productName)
             this.title = this.product.productName;
       this.price = this.product.productPrice; 
       this.description = this.product.productDescription; 
@@ -380,13 +374,11 @@ export default {
       localStorage.setItem("myCart", JSON.stringify(this.cartItems));
     },
     async submitReview() {
-    axios.get('http://localhost:8080/api/addReview', {
-           params: {
+    axios.post('http://localhost:40541/api/addReview', {
              rating: this.rating,
              text: this.text,
              productId: 3,
              email: localStorage.getItem("email")
-           }
         }) 
         .then(function (response) {
           console.log(response.data);
@@ -395,11 +387,10 @@ export default {
            console.log(error);
         }); 
         
-        this.reviews = await axios.get('http://localhost:8080/api/review', {
-           params: {
+        this.reviews = await axios.post('http://localhost:40541/api/reviews', {
              productId: 3,
            }
-        })
+        )
         .then(function (response) {
            return response.data;
                 })
